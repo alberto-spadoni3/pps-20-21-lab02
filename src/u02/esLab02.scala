@@ -34,5 +34,6 @@ object Lab02_2b {
     // def with currying
     def p3(x:Double)(y:Double)(z:Double): Boolean = x <= y && y <= z
 
-  // def without currying
+    // def without currying
+    def p4(x:Double, y:Double, z:Double): Boolean = x <= y && y <= z
 }
