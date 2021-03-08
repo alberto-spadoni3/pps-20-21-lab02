@@ -1,9 +1,9 @@
 package u02
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertNotEquals, assertTrue}
 import org.junit.jupiter.api.Test
 import u02.Lab02_2a.{neg, negAsMethod, parity}
-import u02.Lab02_2b.{p1, p2, p3, p4}
+import u02.Lab02_2b.{compose, p1, p2, p3, p4}
 
 class lab02Test {
   @Test
@@ -44,5 +44,11 @@ class lab02Test {
   def testP4(): Unit = {
     assertFalse(p4(1,2,0))
     assertTrue(p4(22,33,44))
+  }
+
+  @Test
+  def testCompose(): Unit = {
+    assertEquals(9, compose(_-1, _*2)(5))
+    assertNotEquals(60, compose(_+10,_*2)(20))
   }
 }

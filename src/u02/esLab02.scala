@@ -36,4 +36,7 @@ object Lab02_2b {
 
     // def without currying
     def p4(x:Double, y:Double, z:Double): Boolean = x <= y && y <= z
+
+    // functional compositions
+    def compose(f: Int => Int, g: Int => Int): Int => Int = i => f(g(i))
 }
