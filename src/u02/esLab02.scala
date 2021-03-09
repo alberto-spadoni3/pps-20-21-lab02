@@ -22,6 +22,10 @@ object Lab02_2a {
     case true => false
     case _ => true
   }
+  def negAsGenericMethod[A](f: A => Boolean): A => Boolean = f(_) match {
+    case true => false
+    case _ => true
+  }
 }
 
 object Lab02_2b {
