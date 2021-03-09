@@ -43,4 +43,8 @@ object Lab02_2b {
 
     // functional compositions
     def compose(f: Int => Int, g: Int => Int): Int => Int = i => f(g(i))
+
+    // A constrain should be that the input functions f and g,
+    // must wor with values that are all of the same type
+    def genericCompose[A](f: A => A, g: A => A): A => A = i => f(g(i))
 }

@@ -3,7 +3,7 @@ package u02
 import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertNotEquals, assertTrue}
 import org.junit.jupiter.api.Test
 import u02.Lab02_2a.{neg, negAsGenericMethod, negAsMethod, parity, parityVal}
-import u02.Lab02_2b.{compose, p1, p2, p3, p4}
+import u02.Lab02_2b.{compose, genericCompose, p1, p2, p3, p4}
 
 class lab02Test {
   @Test
@@ -91,5 +91,22 @@ class lab02Test {
   def testCompose(): Unit = {
     assertEquals(9, compose(_-1, _*2)(5))
     assertNotEquals(60, compose(_+10,_*2)(20))
+  }
+  @Test
+  def testGenericCompose(): Unit = {
+    val int = 10
+    val partialInt = genericCompose[Int](_-1, _*2)
+    assertEquals(int * 2 - 1, partialInt(int))
+    assertNotEquals(int - 1 * 2, partialInt(int))
+
+    val double = 13.5
+    val partialDouble = genericCompose[Double](_*0.5, _-2.5)
+    assertEquals((double-2.5)*0.5, partialDouble(double))
+
+    val s1 = "Hello, "
+    val s2 = "World"
+    val s3 = "!"
+    val partialString = genericCompose[String](_+s3, _+s2)
+    assertEquals(s1 + s2 + s3, partialString(s1))
   }
 }
