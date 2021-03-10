@@ -21,8 +21,14 @@ object Lab02_5 {
             case _ => None()
         }
 
+        // Estensions for completing task 5
         def filter[A](opt: Option[A])(f:A => Boolean): Option[A] = opt match {
             case Some(a) if f(a) => Some(a)
+            case _ => None()
+        }
+
+        def map[A, B](opt: Option[A])(f:A => B): Option[B] = opt match {
+            case Some(a) => Some(f(a))
             case _ => None()
         }
     }

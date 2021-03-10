@@ -13,8 +13,15 @@ class TestLab02_5 {
         assertEquals(None(), filter(opt)(_>=value+1))
 
         val string = "Scala"
-        val predicate: String=> Boolean = _==string
-        assertEquals(Some(string), filter(Some(string))(predicate))
-        assertNotEquals(Some(string), filter(Some(string + "!"))(predicate))
+        val equals: String => Boolean = _==string
+        assertEquals(Some(string), filter(Some(string))(equals))
+        assertNotEquals(Some(string), filter(Some(string + "!"))(equals))
+    }
+
+    @Test
+    def mapTest(): Unit = {
+        assertEquals(Some(true), map(Some(10))(_>5))
+        assertEquals(Some(false), map(Some(100))(_==10))
+        assertEquals(None(), map(None[Int]())(_<10))
     }
 }
